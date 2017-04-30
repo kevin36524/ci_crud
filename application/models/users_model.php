@@ -20,6 +20,18 @@ class Users_model extends CI_Model {
         return $this->db->insert('users', $data);
     }
 
+    public function getById($id){
+        $query = $this->db->get_where('users',array('id'=>$id));
+        return $query->row_array();
+    }
+
+    public function update_info($data,$id)
+
+    {
+        $this->db->where('users.id',$id);
+        return $this->db->update('users', $data);
+    }
+
 }
 
 ?>

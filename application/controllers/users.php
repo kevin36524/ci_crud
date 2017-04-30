@@ -34,5 +34,24 @@ class Users extends CI_Controller {
         }
     }
 
+    public function edit()
+    {
+        $id = $this->uri->segment(3);
+        $data['user'] = $this->users_model->getById($id);
+        $this->load->view('edit', $data);
+    }
+
+    public function update()
+    {
+        $mdata['name']=$_POST['name'];
+        $mdata['email']=$_POST['email'];
+        $mdata['address']=$_POST['address'];
+        $mdata['mobile']=$_POST['mobile'];
+        $res=$this->users_model->update_info($mdata, $_POST['id']);
+        if($res){
+            header('location:'.base_url()."index.php/users/".$this->index());
+        }
+    }
+
 }
 
