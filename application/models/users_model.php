@@ -26,10 +26,15 @@ class Users_model extends CI_Model {
     }
 
     public function update_info($data,$id)
-
     {
         $this->db->where('users.id',$id);
         return $this->db->update('users', $data);
+    }
+
+    public function delete_a_user($id)
+    {
+        $this->db->where('users.id',$id);
+        return $this->db->delete('users');
     }
 
 }

@@ -53,5 +53,11 @@ class Users extends CI_Controller {
         }
     }
 
+    public function delete($id)
+    {
+        $this->users_model->delete_a_user($id);
+        $this->index();
+    }
+
 }
 
